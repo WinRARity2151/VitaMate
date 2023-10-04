@@ -1,0 +1,36 @@
+{% extends "./base.html" %}
+
+{% block heading %}My Pressure Chart{% endblock %}
+
+{% block content %}
+{% include "./pressure_data.html" with pale_data=pale_data %}
+
+    <div id="my-chart"></div>
+
+    {% include "./popup_form.html" %}
+    {% load static %}
+    <script src="{% static 'VitaMate/js/script.js' %}"></script>
+    <script>
+        var labels = [{% for item in data %}'{{ item.date }}',{% endfor %}];
+        var data = {
+            labels: labels,
+            series: [
+                [{% for item in data %}{{ item.average_pressure }},{% endfor %}]
+            ]
+        };
+
+        var options = {
+            high: 200,
+            low: 50,
+            axisX: {
+                labelInterpolationFnc: function (value, index) {
+                    // Возвращаем дату из массива labels
+                    return labels[index];
+                }
+            }
+        };
+
+        new Chartist.Line('#my-chart', data, options);
+    </script>
+
+{% endblock %}

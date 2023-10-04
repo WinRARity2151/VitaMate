@@ -1,0 +1,20 @@
+<div id="popupForm" style="display: none;">
+    <h2>Add Pressure Data</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="systolic_pressure">Systolic Pressure:</label>
+            <input type="number" id="systolic_pressure" name="systolic_pressure">
+        </div>
+        <div>
+            <label for="diastolic_pressure">Diastolic Pressure:</label>
+            <input type="number" id="diastolic_pressure" name="diastolic_pressure">
+        </div>
+        <div>
+            <label for="pulse">Pulse:</label>
+            <input type="number" id="pulse" name="pulse">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    <button id="closeFormButton">Close</button>
+</div>

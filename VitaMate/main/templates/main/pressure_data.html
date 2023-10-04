@@ -1,0 +1,14 @@
+<!-- pressure_data.html -->
+<div class="pale-data-container">
+    <div class="pale-data">
+        {% for item in pale_data %}
+        <div class="pale-data-item">
+            <p>{{ item.systolic_pressure }} / {{ item.diastolic_pressure }}</p>
+            <p>{{ item.pulse }}</p>
+            <p>{{ item.time|date:"H:i" }}</p>
+            <p>{{ item.date }}</p>
+        </div>
+        {% endfor %}
+        <button id="showFormButton">Add Data</button>
+    </div>
+</div>
