@@ -12,9 +12,7 @@ def index(request):
     else:
         form = Pressure_Data_form()
 
-    pale_data = Pressure_Data.objects.all().order_by('date')
-    for item in pale_data:
-        print(item.__dict__)
+    pale_data = Pressure_Data.objects.all().order_by('-date')
 
     req = {
         'form': form
